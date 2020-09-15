@@ -29,9 +29,9 @@ namespace WebApiTests.PersonControllerTests
         [Test]
         public void Update_Ok()
         {
-            var command = new UpdatePersonCommand(1, "Frodo", "The Shire");
+            var model = new UpdatePersonModel(1, "Frodo", "The Shire");
 
-            var result = _controller.Put(command);
+            var result = _controller.Put(model);
             Assert.IsInstanceOf<OkObjectResult>(result.Result);
 
             var value = (result.Result as OkObjectResult).Value as Person;
@@ -43,9 +43,9 @@ namespace WebApiTests.PersonControllerTests
         [Test]
         public void Update_BadRequest()
         {
-            var command = new UpdatePersonCommand(0, "Frodo", "The Shire");
+            var model = new UpdatePersonModel(0, "Frodo", "The Shire");
 
-            var result = _controller.Put(command);
+            var result = _controller.Put(model);
             Assert.IsInstanceOf<BadRequestObjectResult>(result.Result);
         }
     }

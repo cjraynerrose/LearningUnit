@@ -12,21 +12,22 @@ namespace WebApi
     [ApiController]
     public class PersonController : ControllerBase
     {
-        [HttpGet]
+        [HttpGet("{term?}")]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status200OK)]
-        public ActionResult<List<Person>> Get([FromServices] GetPersonQuery query)
+        public ActionResult<List<Person>> Get(string term = "")
         {
+            var query = new GetPersonQuery(term);
             query.Execute();
-            if(!query.GetResult().Succeeded)
+            if (!query.GetResult().Succeeded)
             {
                 return BadRequest("The request for Persons failed.");
             }
 
             var result = query.GetResult() as GetPersonResult;
 
-            if(result.Persons.Count == 0)
+            if (result.Persons.Count == 0)
             {
                 return NoContent();
             }
@@ -37,10 +38,11 @@ namespace WebApi
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status201Created)]
-        public ActionResult<Person> Post([FromServices] CreatePersonCommand command)
+        public ActionResult<Person> Post(CreatePersonModel model)
         {
+            var command = model.ToCommand();
             command.Execute();
-            if(!command.GetResult().Succeeded)
+            if (!command.GetResult().Succeeded)
             {
                 return BadRequest("Could not create a Person");
             }
@@ -53,10 +55,11 @@ namespace WebApi
         [HttpPut]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status200OK)]
-        public ActionResult<Person> Put([FromServices] UpdatePersonCommand command)
+        public ActionResult<Person> Put(UpdatePersonModel model)
         {
+            var command = model.ToCommand();
             command.Execute();
-            if(!command.GetResult().Succeeded)
+            if (!command.GetResult().Succeeded)
             {
                 return BadRequest("Could not update a Person");
             }
@@ -66,13 +69,14 @@ namespace WebApi
             return Ok(result.Person);
         }
 
-        [HttpDelete]
+        [HttpDelete("{id}")]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status200OK)]
-        public ActionResult<Person> Delete([FromServices] DeletePersonCommand command)
+        public ActionResult<Person> Delete(int id)
         {
+            var command = new DeletePersonCommand(id);
             command.Execute();
-            if(!command.GetResult().Succeeded)
+            if (!command.GetResult().Succeeded)
             {
                 return BadRequest("Could not delete a person");
             }

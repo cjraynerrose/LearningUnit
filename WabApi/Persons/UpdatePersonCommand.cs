@@ -16,7 +16,7 @@ namespace Persons
         }
 
         PersonStore PersonStore = new PersonStore();
-        Person Person;
+        public Person Person { get; }
 
         public override void Execute()
         {

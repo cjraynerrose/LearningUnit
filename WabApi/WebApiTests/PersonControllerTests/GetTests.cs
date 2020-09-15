@@ -30,9 +30,7 @@ namespace WebApiTests.PersonControllerTests
         [Test]
         public void Get_All_Ok()
         {
-            GetPersonQuery query = new GetPersonQuery();
-
-            var result = _controller.Get(query);
+            var result = _controller.Get();
             Assert.IsInstanceOf<OkObjectResult>(result.Result);
 
             var okResult = result.Result as OkObjectResult;
@@ -46,9 +44,7 @@ namespace WebApiTests.PersonControllerTests
         [Test]
         public void Get_OneByQuery_Ok()
         {
-            GetPersonQuery query = new GetPersonQuery("Gandelf");
-
-            var result = _controller.Get(query);
+            var result = _controller.Get("Gandelf");
             Assert.IsInstanceOf<OkObjectResult>(result.Result);
 
             var data = ((result.Result as OkObjectResult).Value) as List<Person>;
@@ -61,9 +57,7 @@ namespace WebApiTests.PersonControllerTests
         [Test]
         public void Get_NoContent()
         {
-            GetPersonQuery query = new GetPersonQuery("nothing to be found here");
-
-            var result = _controller.Get(query);
+            var result = _controller.Get("nothing to be found here");
             Assert.IsInstanceOf<NoContentResult>(result.Result);
         }
     }

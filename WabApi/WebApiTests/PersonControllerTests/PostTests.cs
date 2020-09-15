@@ -27,9 +27,9 @@ namespace WebApiTests.PersonControllerTests
         [Test]
         public void Create_CreatedAt()
         {
-            var command = new CreatePersonCommand("Derek", "France");
+            var model = new CreatePersonModel("Derek", "France");
 
-            var result = _controller.Post(command);
+            var result = _controller.Post(model);
             Assert.IsInstanceOf<CreatedAtActionResult>(result.Result);
 
             var createdResult = result.Result as CreatedAtActionResult;
@@ -44,9 +44,9 @@ namespace WebApiTests.PersonControllerTests
         [Test]
         public void Create_BadRequest()
         {
-            var command = new CreatePersonCommand("", "");
+            var model = new CreatePersonModel("", "");
 
-            var result = _controller.Post(command);
+            var result = _controller.Post(model);
             Assert.IsInstanceOf<BadRequestObjectResult>(result.Result);
         }
     }

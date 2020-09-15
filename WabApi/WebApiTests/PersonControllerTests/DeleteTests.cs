@@ -32,9 +32,7 @@ namespace WebApiTests.PersonControllerTests
         [Test]
         public void Delete_Ok()
         {
-            var command = new DeletePersonCommand(1);
-
-            var result = _controller.Delete(command);
+            var result = _controller.Delete(1);
             Assert.IsInstanceOf<OkObjectResult>(result.Result);
 
             var value = (result.Result as OkObjectResult).Value as Person;
@@ -46,9 +44,7 @@ namespace WebApiTests.PersonControllerTests
         [Test]
         public void Delete_BadRequest()
         {
-            var command = new DeletePersonCommand(0);
-
-            var result = _controller.Delete(command);
+            var result = _controller.Delete(0);
             Assert.IsInstanceOf<BadRequestObjectResult>(result.Result);
         }
     }

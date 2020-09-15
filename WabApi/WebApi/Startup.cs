@@ -14,14 +14,17 @@ namespace Persons
     {
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddTransient<CreatePersonCommand>();
-            services.AddTransient<GetPersonQuery>();
-            services.AddTransient<UpdatePersonCommand>();
-            services.AddTransient<DeletePersonCommand>();
+            services.AddControllers();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            new CreatePersonCommand("Gandelf", "Hogwarts").Execute(); // 1
+            new CreatePersonCommand("Frodo", "Cider").Execute(); // 2
+            new CreatePersonCommand("Legolas", "Tree").Execute(); // 3
+            new CreatePersonCommand("Sauron", "Spicy Hill").Execute(); // 4
+            new CreatePersonCommand("Bill", "The Pony").Execute(); // 5
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -31,6 +34,7 @@ namespace Persons
 
             app.UseEndpoints(endpoints =>
             {
+                endpoints.MapControllers();
                 endpoints.MapGet("/", async context =>
                 {
                     await context.Response.WriteAsync("Hello World!");
