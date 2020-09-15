@@ -2,9 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Diagnostics;
 
-namespace WebApi
+namespace Persons
 {
     public class PersonStore
     {

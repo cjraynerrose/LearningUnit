@@ -1,9 +1,8 @@
 ﻿using System;
-using Microsoft.AspNetCore.Mvc;
 
-namespace WebApi
+namespace Persons
 {
-    public class CreatePersonCommand
+    public class CreatePersonCommand : Command
     {
         public CreatePersonCommand(string name, string nationality)
         {
@@ -15,7 +14,7 @@ namespace WebApi
         public string Name { get; }
         public string Nationality { get; }
 
-        public CreatePersonResult Execute()
+        public override void Execute()
         {
             Person newPerson = new Person(Name, Nationality);
             if (newPerson.IsValid())
@@ -23,8 +22,7 @@ namespace WebApi
                 PersonStore.Add(newPerson);
             }
 
-            CreatePersonResult result = new CreatePersonResult(newPerson);
-            return result;
+            Result = new CreatePersonResult(newPerson);
         }
     }
 }

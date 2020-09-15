@@ -1,8 +1,8 @@
 ﻿using System;
 
-namespace WebApi
+namespace Persons
 {
-    public class DeletePersonCommand
+    public class DeletePersonCommand : Command
     {
         public DeletePersonCommand(int id)
         {
@@ -12,11 +12,10 @@ namespace WebApi
         private PersonStore PersonStore = new PersonStore();
         public int Id { get; }
 
-        public DeletePersonResult Execute()
+        public override void Execute()
         {
             var deletedPerson = PersonStore.Delete(Id);
-            var result = new DeletePersonResult(deletedPerson);
-            return result;
+            Result = new DeletePersonResult(deletedPerson);
         }
 
         

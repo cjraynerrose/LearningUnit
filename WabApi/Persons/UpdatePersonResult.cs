@@ -1,10 +1,9 @@
 ﻿
 
-namespace WebApi
+namespace Persons
 {
-    public class UpdatePersonResult
+    public class UpdatePersonResult : Result
     {
-        public bool? Succeeded { get; private set; }
         public Person Person { get; }
         public CommandState Status { get; }
 
@@ -15,7 +14,7 @@ namespace WebApi
             Succeeded = ResolveResult();
         }
 
-        private bool ResolveResult()
+        protected override bool ResolveResult()
         {
             if (Status == CommandState.NoPersonFound)
             {

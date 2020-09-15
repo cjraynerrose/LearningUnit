@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using NUnit.Framework;
-using WebApi;
+using Persons;
 
-namespace WebApiTests
+namespace PersonsTests
 {
     public class GetPersonTests
     {
@@ -36,7 +36,8 @@ namespace WebApiTests
         public void GetPerson(string term)
         {
             GetPersonQuery query = new GetPersonQuery(term);
-            GetPersonResult result = query.Execute();
+            query.Execute();
+            GetPersonResult result = query.GetResult() as GetPersonResult;
 
             Assert.IsTrue(result.Succeeded);
             Assert.AreEqual(1, result.Persons.Count);
@@ -52,7 +53,8 @@ namespace WebApiTests
         public void GetPersonFail(string term)
         {
             GetPersonQuery query = new GetPersonQuery(term);
-            GetPersonResult result = query.Execute();
+            query.Execute();
+            GetPersonResult result = query.GetResult() as GetPersonResult;
 
             Assert.IsTrue(result.Succeeded);
             Assert.AreEqual(0, result.Persons.Count);

@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 using NUnit.Framework;
-using WebApi;
+using Persons;
 
-namespace WebApiTests
+namespace PersonsTests
 {
     public class UpdatePersonTests
     {
@@ -26,13 +26,16 @@ namespace WebApiTests
         [Test]
         public void UpdatePerson()
         {
-            UpdateCommand unc = new UpdateCommand(1, "Gazza", "Gurder");
-            UpdatePersonResult unr = unc.Execute();
+            Command unc = new UpdatePersonCommand(1, "Gazza", "Gurder");
+            unc.Execute();
+            UpdatePersonResult unr = unc.GetResult() as UpdatePersonResult;
 
             Assert.IsTrue(unr.Succeeded);
             Assert.AreEqual("Gazza", unr.Person.Name);
 
-            GetPersonResult gpr = new GetPersonQuery("1").Execute();
+            Command gpq = new GetPersonQuery("1");
+            gpq.Execute();
+            GetPersonResult gpr = gpq.GetResult() as GetPersonResult;
 
             Assert.IsTrue(gpr.Succeeded);
             Assert.AreEqual(1, gpr.Persons.Count);
@@ -43,8 +46,9 @@ namespace WebApiTests
         [Test]
         public void UpdatePersonFail()
         {
-            UpdateCommand unc = new UpdateCommand(2, "Gazza", "Gurder");
-            UpdatePersonResult unr = unc.Execute();
+            Command unc = new UpdatePersonCommand(2, "Gazza", "Gurder");
+            unc.Execute();
+            UpdatePersonResult unr = unc.GetResult() as UpdatePersonResult;
 
             Assert.IsFalse(unr.Succeeded);
             Assert.AreEqual(CommandState.NoPersonFound, unr.Status);

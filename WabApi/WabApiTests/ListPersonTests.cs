@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 using NUnit.Framework;
-using WebApi;
+using Persons;
 
-namespace WebApiTests
+namespace PersonsTests
 {
     public class ListPersonTests
     {
@@ -12,9 +12,9 @@ namespace WebApiTests
         public void SetUp()
         {
             PersonStore.DELETE_ALL();
-            var cpc1 = new CreatePersonCommand("Alfred", "Africa").Execute();
-            var cpc2 = new CreatePersonCommand("Billy", "Botswana").Execute();
-            var cpc3 = new CreatePersonCommand("Chad", "Chad").Execute();
+            new CreatePersonCommand("Alfred", "Africa").Execute();
+            new CreatePersonCommand("Billy", "Botswana").Execute();
+            new CreatePersonCommand("Chad", "Chad").Execute();
         }
 
         [OneTimeTearDown]
@@ -33,7 +33,8 @@ namespace WebApiTests
         public void ListPersons()
         {
             GetPersonQuery query = new GetPersonQuery();
-            GetPersonResult result = query.Execute();
+            query.Execute();
+            GetPersonResult result = query.GetResult() as GetPersonResult;
 
             Assert.AreEqual(result.Persons.Count, 3);
             Assert.AreEqual(result.Persons[0].Name, "Alfred");

@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 using NUnit.Framework;
-using WebApi;
+using Persons;
 
-namespace WebApiTests
+namespace PersonsTests
 {
     public class DeletePersonTests
     {
@@ -25,7 +25,8 @@ namespace WebApiTests
         public void DeletePerson()
         {
             DeletePersonCommand dpc = new DeletePersonCommand(1);
-            DeletePersonResult dpr = dpc.Execute();
+            dpc.Execute();
+            DeletePersonResult dpr = dpc.GetResult() as DeletePersonResult;
 
             Assert.IsTrue(dpr.Succeeded);
             Assert.AreEqual(1, dpr.Person.Id);
@@ -33,7 +34,8 @@ namespace WebApiTests
             Assert.AreEqual("Britian", dpr.Person.Nationality);
 
             GetPersonQuery gpq = new GetPersonQuery("Boris");
-            GetPersonResult gpr = gpq.Execute();
+            gpq.Execute();
+            GetPersonResult gpr = gpq.GetResult() as GetPersonResult;
 
             Assert.IsTrue(gpr.Succeeded);
             Assert.AreEqual(0, gpr.Persons.Count);

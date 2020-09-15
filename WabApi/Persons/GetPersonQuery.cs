@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Linq;
 
-namespace WebApi
+namespace Persons
 {
-    public class GetPersonQuery
+    public class GetPersonQuery : Command
     {
         public GetPersonQuery(string term = "")
         {
@@ -13,7 +13,7 @@ namespace WebApi
         PersonStore PersonStore = new PersonStore();
         public string Term { get; }
 
-        public GetPersonResult Execute()
+        public override void Execute()
         {
             var persons = PersonStore.Get()
                 .Where(p =>
@@ -23,8 +23,7 @@ namespace WebApi
                 )
                 .ToList();
 
-            var result = new GetPersonResult(persons);
-            return result;
+            Result = new GetPersonResult(persons);
         }
     }
 }

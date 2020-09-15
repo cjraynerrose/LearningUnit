@@ -1,11 +1,10 @@
 ﻿using System.Collections.Generic;
 
-namespace WebApi
+namespace Persons
 {
-    public class GetPersonResult
+    public class GetPersonResult : Result
     {
         public List<Person> Persons { get; }
-        public bool Succeeded { get; private set; }
 
         public GetPersonResult(List<Person> persons)
         {
@@ -13,7 +12,7 @@ namespace WebApi
             Succeeded = ResolveResult();
         }
 
-        private bool ResolveResult()
+        protected override bool ResolveResult()
         {
             if(Persons == null)
             {

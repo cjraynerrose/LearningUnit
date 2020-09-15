@@ -1,19 +1,23 @@
-﻿namespace WebApi
+﻿namespace Persons
 {
-    public class DeletePersonResult
+    public class CreatePersonResult : Result
     {
-        public bool Succeeded { get; }
         public Person Person { get; }
 
-        public DeletePersonResult(Person person)
+        public CreatePersonResult(Person person)
         {
             Person = person;
             Succeeded = ResolveResult();
         }
 
-        private bool ResolveResult()
+        protected override bool ResolveResult()
         {
             if(Person == null)
+            {
+                return false;
+            }
+
+            if(!Person.IsValid())
             {
                 return false;
             }

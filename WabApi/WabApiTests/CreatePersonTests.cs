@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 using NUnit.Framework;
-using WebApi;
+using Persons;
 
-namespace WebApiTests
+namespace PersonsTests
 {
     public class CreatePersonTests
     {
@@ -24,11 +24,12 @@ namespace WebApiTests
         public void CreatePerson(string name, string nationality)
         {
             CreatePersonCommand command = new CreatePersonCommand(name, nationality);
-            CreatePersonResult result = command.Execute();
+            command.Execute();
+            CreatePersonResult result = command.GetResult() as CreatePersonResult;
 
             Assert.IsTrue(result.Succeeded);
-            Assert.AreEqual(result.Person.Name, name);
-            Assert.AreEqual(result.Person.Nationality, nationality);
+            Assert.AreEqual(name, result.Person.Name);
+            Assert.AreEqual(nationality, result.Person.Nationality);
         }
     }
 }
