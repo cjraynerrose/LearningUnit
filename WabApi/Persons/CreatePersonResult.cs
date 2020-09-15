@@ -12,12 +12,12 @@
 
         protected override bool ResolveResult()
         {
-            if(Person == null)
+            if (Person == null)
             {
                 return false;
             }
 
-            if(!Person.IsValid())
+            if (!Person.IsValid())
             {
                 return false;
             }

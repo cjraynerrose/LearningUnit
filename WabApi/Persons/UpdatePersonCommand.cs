@@ -1,7 +1,4 @@
-﻿using System;
-using System.Security.Cryptography.X509Certificates;
-
-namespace Persons
+﻿namespace Persons
 {
     public class UpdatePersonCommand : Command
     {

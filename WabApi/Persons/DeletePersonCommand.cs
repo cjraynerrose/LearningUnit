@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Persons
+﻿namespace Persons
 {
     public class DeletePersonCommand : Command
     {
@@ -18,6 +16,6 @@ namespace Persons
             Result = new DeletePersonResult(deletedPerson);
         }
 
-        
+
     }
 }

@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace Persons
 {
@@ -25,7 +23,7 @@ namespace Persons
             {
                 return null;
             }
-            
+
             return person;
         }
 
@@ -37,7 +35,7 @@ namespace Persons
         public CommandState Update(Person person)
         {
             var personToUpdate = Persons.FirstOrDefault(p => p.Id == person.Id);
-            if(personToUpdate == null)
+            if (personToUpdate == null)
             {
                 return CommandState.NoPersonFound;
             }

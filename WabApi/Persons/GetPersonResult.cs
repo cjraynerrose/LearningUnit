@@ -14,7 +14,7 @@ namespace Persons
 
         protected override bool ResolveResult()
         {
-            if(Persons == null)
+            if (Persons == null)
             {
                 return false;
             }

@@ -1,5 +1,4 @@
 ﻿using Persons;
-using System;
 
 namespace WebApi
 {
@@ -16,6 +15,6 @@ namespace WebApi
         public string Nationality { get; set; }
 
         public CreatePersonCommand ToCommand() => new CreatePersonCommand(Name, Nationality);
-        
+
     }
 }

@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Persons
+﻿namespace Persons
 {
     public class CreatePersonCommand : Command
     {

@@ -12,7 +12,7 @@
 
         protected override bool ResolveResult()
         {
-            if(Person == null)
+            if (Person == null)
             {
                 return false;
             }

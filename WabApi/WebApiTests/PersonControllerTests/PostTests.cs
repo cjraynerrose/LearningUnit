@@ -1,9 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using NUnit.Framework;
 using Persons;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using WebApi;
 
 namespace WebApiTests.PersonControllerTests

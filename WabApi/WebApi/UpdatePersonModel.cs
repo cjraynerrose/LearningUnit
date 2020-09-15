@@ -1,5 +1,4 @@
 ﻿using Persons;
-using System;
 
 namespace WebApi
 {
