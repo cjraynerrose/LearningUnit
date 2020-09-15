@@ -2,7 +2,7 @@
 using Persistence;
 using PersonTransactions;
 
-namespace PersonsTests
+namespace PersonTests
 {
     public class DeletePersonTests
     {

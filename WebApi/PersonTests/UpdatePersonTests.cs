@@ -3,7 +3,7 @@ using Persistence;
 using PersonTransactions;
 using Transactions;
 
-namespace PersonsTests
+namespace PersonTests
 {
     public class UpdatePersonTests
     {
