@@ -1,7 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using PersonDomain;
+using System.Collections.Generic;
 using System.Linq;
 
-namespace Persons
+namespace Persistence
 {
     public class PersonStore
     {
@@ -32,18 +33,18 @@ namespace Persons
             return Persons.AsQueryable();
         }
 
-        public CommandState Update(Person person)
+        public TransactionState Update(Person person)
         {
             var personToUpdate = Persons.FirstOrDefault(p => p.Id == person.Id);
             if (personToUpdate == null)
             {
-                return CommandState.NoPersonFound;
+                return TransactionState.NoPersonFound;
             }
 
             Persons.Remove(personToUpdate);
             Persons.Add(person);
 
-            return CommandState.Success;
+            return TransactionState.Success;
         }
 
         public int GetNextId()
@@ -63,11 +64,5 @@ namespace Persons
         }
 
 
-    }
-
-    public enum CommandState
-    {
-        Success,
-        NoPersonFound
     }
 }

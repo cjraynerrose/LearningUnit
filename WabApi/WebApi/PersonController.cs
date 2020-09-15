@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Persons;
+using PersonDomain;
+using PersonTransactions;
 using System.Collections.Generic;
 
 namespace WebApi

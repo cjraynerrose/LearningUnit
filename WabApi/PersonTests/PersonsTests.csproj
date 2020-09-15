@@ -13,7 +13,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Persons\Persons.csproj" />
+    <ProjectReference Include="..\Persistence\Persistence.csproj" />
+    <ProjectReference Include="..\Persons\PersonDomain.csproj" />
+    <ProjectReference Include="..\PersonTransactions\PersonTransactions.csproj" />
   </ItemGroup>
 
 </Project>

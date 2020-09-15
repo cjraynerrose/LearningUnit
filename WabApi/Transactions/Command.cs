@@ -1,4 +1,4 @@
-﻿namespace Persons
+﻿namespace Transactions
 {
     public abstract class Command
     {

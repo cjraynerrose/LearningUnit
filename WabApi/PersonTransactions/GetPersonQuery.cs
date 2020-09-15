@@ -1,7 +1,9 @@
-﻿using System;
+﻿using Persistence;
+using System;
 using System.Linq;
+using Transactions;
 
-namespace Persons
+namespace PersonTransactions
 {
     public class GetPersonQuery : Command
     {

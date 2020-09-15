@@ -1,6 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using PersonDomain;
+using System.Collections.Generic;
+using Transactions;
 
-namespace Persons
+namespace PersonTransactions
 {
     public class GetPersonResult : Result
     {

@@ -1,5 +1,7 @@
 ﻿using NUnit.Framework;
-using Persons;
+using Persistence;
+using PersonTransactions;
+using Transactions;
 
 namespace PersonsTests
 {
@@ -48,7 +50,7 @@ namespace PersonsTests
             UpdatePersonResult unr = unc.GetResult() as UpdatePersonResult;
 
             Assert.IsFalse(unr.Succeeded);
-            Assert.AreEqual(CommandState.NoPersonFound, unr.Status);
+            Assert.AreEqual(TransactionState.NoPersonFound, unr.Status);
         }
     }
 }

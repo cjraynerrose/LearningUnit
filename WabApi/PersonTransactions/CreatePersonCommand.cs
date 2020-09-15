@@ -1,4 +1,8 @@
-﻿namespace Persons
+﻿using Persistence;
+using PersonDomain;
+using Transactions;
+
+namespace PersonTransactions
 {
     public class CreatePersonCommand : Command
     {

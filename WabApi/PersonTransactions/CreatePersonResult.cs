@@ -1,31 +1,31 @@
-﻿
+﻿using PersonDomain;
+using Transactions;
 
-namespace Persons
+namespace PersonTransactions
 {
-    public class UpdatePersonResult : Result
+    public class CreatePersonResult : Result
     {
         public Person Person { get; }
-        public CommandState Status { get; }
 
-        public UpdatePersonResult(CommandState status = CommandState.Success, Person person = null)
+        public CreatePersonResult(Person person)
         {
-            Status = status;
             Person = person;
             Succeeded = ResolveResult();
         }
 
         protected override bool ResolveResult()
         {
-            if (Status == CommandState.NoPersonFound)
+            if (Person == null)
+            {
+                return false;
+            }
+
+            if (!Person.IsValid())
             {
                 return false;
             }
 
             return true;
         }
-
-
-
     }
-
 }

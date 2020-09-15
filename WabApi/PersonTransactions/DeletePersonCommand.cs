@@ -1,4 +1,7 @@
-﻿namespace Persons
+﻿using Persistence;
+using Transactions;
+
+namespace PersonTransactions
 {
     public class DeletePersonCommand : Command
     {

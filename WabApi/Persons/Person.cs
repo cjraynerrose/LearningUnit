@@ -1,4 +1,4 @@
-﻿namespace Persons
+﻿namespace PersonDomain
 {
     public class Person
     {
@@ -34,7 +34,7 @@
             Nationality = nationality;
         }
 
-        internal void SetId(int id)
+        public void SetId(int id)
         {
             Id = id;
         }

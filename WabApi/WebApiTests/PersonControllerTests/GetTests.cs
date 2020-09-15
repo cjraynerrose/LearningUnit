@@ -1,6 +1,8 @@
 using Microsoft.AspNetCore.Mvc;
 using NUnit.Framework;
-using Persons;
+using Persistence;
+using PersonDomain;
+using PersonTransactions;
 using System.Collections.Generic;
 using WebApi;
 

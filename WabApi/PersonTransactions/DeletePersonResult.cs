@@ -1,10 +1,13 @@
-﻿namespace Persons
+﻿using PersonDomain;
+using Transactions;
+
+namespace PersonTransactions
 {
-    public class CreatePersonResult : Result
+    public class DeletePersonResult : Result
     {
         public Person Person { get; }
 
-        public CreatePersonResult(Person person)
+        public DeletePersonResult(Person person)
         {
             Person = person;
             Succeeded = ResolveResult();
@@ -13,11 +16,6 @@
         protected override bool ResolveResult()
         {
             if (Person == null)
-            {
-                return false;
-            }
-
-            if (!Person.IsValid())
             {
                 return false;
             }

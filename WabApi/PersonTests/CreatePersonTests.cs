@@ -1,5 +1,6 @@
 ﻿using NUnit.Framework;
-using Persons;
+using Persistence;
+using PersonTransactions;
 
 namespace PersonsTests
 {
